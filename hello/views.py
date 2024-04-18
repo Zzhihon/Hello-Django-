@@ -17,18 +17,20 @@ def log_message(request):
             message = form.save(commit=False)
             message.log_date = datetime.now()
             message.save()
-            return redirect("home")
+            return redirect("data")
     else:
         return render(request, "hello/log_message.html", {"form":form})
 
-class HomeListView(ListView):
+class DataListView(ListView):
     """Renders the home page, with a list of all messages."""
     model = LogMessage
 
     def get_context_data(self, **kwargs):
-        context = super(HomeListView, self).get_context_data(**kwargs)
+        context = super(DataListView, self).get_context_data(**kwargs)
         return context
 
+def home(request):
+    return render(request, "hello/home.html")
 
 def about(request):
     return render(request, "hello/about.html")
