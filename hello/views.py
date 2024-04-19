@@ -17,7 +17,7 @@ def log_message(request):
             message = form.save(commit=False)
             message.log_date = datetime.now()
             message.save()
-            return redirect("data")
+            return redirect("log_success")
     else:
         return render(request, "hello/log_message.html", {"form":form})
 
@@ -28,6 +28,9 @@ class DataListView(ListView):
     def get_context_data(self, **kwargs):
         context = super(DataListView, self).get_context_data(**kwargs)
         return context
+
+def log_success(request):
+    return render(request, "hello/log_success.html")
 
 def home(request):
     return render(request, "hello/home.html")

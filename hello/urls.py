@@ -15,6 +15,6 @@ urlpatterns = [
     path("data/", data_list_view, name="data"),
     path("", views.home, name="home"),
     path("contact/" , views.contact, name="contact"),
-
+    path("log_success/", views.log_success, name="log_success"),
     path("log/", views.log_message, name="log"),
 ]
